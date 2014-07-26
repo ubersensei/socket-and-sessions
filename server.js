@@ -1,6 +1,10 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var redisHost = '127.0.0.1';
+var redisPort = 6379;
+var redisDB = 2;
 
 var app = express();
 
@@ -8,9 +12,13 @@ app.use(cookieParser());
 app.use(session({
     secret: 'keyboard cat',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    store: new RedisStore({
+        host: redisHost,
+        port: redisPort,
+        db: redisDB
+    })
 }));
-
 
 app.get('/', function(req, res) {
     res.send('Home Page <br/> Try /awesome');

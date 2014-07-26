@@ -1,4 +1,4 @@
-# Socket and Session
+# Socket and Sessions
 
 
 ## Start
@@ -10,8 +10,14 @@ install npm module --save
 ```
 
 
-## Plain Session
+## Simple Session Implementation
 
 See `server-01.js`
-This standalone file adequately contains session implementation
+This standalone file adequately contains a simple session implementation
+
+
+## Session with Redis
+
+See `server-02.js`
+This standalone file adequately contains session + redis implementation
 
