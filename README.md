@@ -1,7 +1,7 @@
 # Socket and Sessions
 
 
-## Start
+### Start
 
 ```
 npm init
@@ -10,13 +10,13 @@ install npm module --save
 ```
 
 
-## Simple Session Implementation
+### Simple Session Implementation
 
 See `server-01.js`
 This standalone file adequately contains a simple session implementation
 
 
-## Session with Redis
+### Session with Redis
 
 See `server-02.js`
 This standalone file adequately contains session + redis implementation

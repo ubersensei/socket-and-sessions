@@ -1,3 +1,4 @@
+var http = require('http');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -45,5 +46,6 @@ app.get('/radical', function(req, res) {
 
 app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + server.address().port);
+    var serverName = process.env.VCAP_APP_HOST ? process.env.VCAP_APP_HOST + ":" + process.env.VCAP_APP_PORT : 'localhost:3000';
+    console.log('Express server listening on servername: '+ serverName +' + port: ' + server.address().port);
 });
