@@ -1,13 +1,21 @@
 body {
     font-family: 'Dosis', sans-serif;
-    padding-left: 5em;
+    margin: 3em 5em 0em 5em;
 
 }
 
 h1 {
     font-size: 48px;
+    margin-bottom: 1em;
 }
 
 input#userNameInput {
     width : 25em;
+}
+
+
+#messages {
+    border: 1px solid #999;
+    padding: 1em;
+    width: 30em;
 }
