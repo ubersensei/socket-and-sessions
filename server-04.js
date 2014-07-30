@@ -1,15 +1,15 @@
 /*
 
-Login (post userName and store in session)
+ Login (post userName and store in session)
 
-- Start with server-01.js
-- Add jsessionid from server-03.js
-- Create the index.html which could post a userName
-- for serving the static (css etc.), require('path') and also app.use(express.static(path.join(__dirname, 'public')));
-- had to add bodyParser.json() and ensure the contentType is json both ways
-- (apparently bodyParser is not good, express.json is, according to http://andrewkelley.me/post/do-not-use-bodyparser-with-express-js.html)
-- introduced socket.io
-- but had to change app.listen(...) to server.listen(...) for it to work correctly
+ - Start with server-01.js
+ - Add jsessionid from server-03.js
+ - Create the index.html which could post a userName
+ - for serving the static (css etc.), require('path') and also app.use(express.static(path.join(__dirname, 'public')));
+ - had to add bodyParser.json() and ensure the contentType is json both ways
+ - (apparently bodyParser is not good, express.json is, according to http://andrewkelley.me/post/do-not-use-bodyparser-with-express-js.html)
+ - introduced socket.io
+ - but had to change app.listen(...) to server.listen(...) for it to work correctly
 
  */
 

@@ -1,0 +1,13 @@
+body {
+    font-family: 'Dosis', sans-serif;
+    padding-left: 5em;
+
+}
+
+h1 {
+    font-size: 48px;
+}
+
+input#userNameInput {
+    width : 25em;
+}

@@ -1,8 +1,8 @@
 /*
 
-It is a repeat of server-01.js
+ Creating a custom session id and accessing it.
 
-With the addition of trying out a custom session id and displaying it.
+ Start with server-01.js
 
  Test:
 
