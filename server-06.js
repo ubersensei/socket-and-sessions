@@ -68,7 +68,6 @@ io.on('connection', function (socket) {
     socket.on('join', function () {
         console.log(socket.handshake.session.user + ' joined');
         var reply = JSON.stringify({category:'join', user:socket.handshake.session.user, msg:' joined the channel' });
-//        io.emit('chat', reply);
         pub.publish('chat-redis', reply);
     });
     socket.on('chat', function (message) {
@@ -76,14 +75,12 @@ io.on('connection', function (socket) {
         var content = chatMessage.msg;
         console.log(socket.handshake.session.user + ' pubished a chat message');
         var reply = JSON.stringify({category:'chat', user:socket.handshake.session.user, msg: content });
-//        io.emit('chat', reply);
         pub.publish('chat-redis', reply);
     });
 
 });
 
 sub.on('message', function (channel, message) {
-    console.log('got subbed');
 //        io.emit(channel, message);
     io.emit('chat', message);
 });

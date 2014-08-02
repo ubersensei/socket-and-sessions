@@ -20,7 +20,7 @@ $(document).ready(function () {
             .done(function() {
                 // send join message
 
-                alert('login success');
+//                alert('login success');
 
                 socket = io();
                 socket.emit('join', JSON.stringify({}));
