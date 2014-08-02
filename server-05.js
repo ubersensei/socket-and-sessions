@@ -89,6 +89,9 @@ io.on('connection', function (socket) {
 });
 
 
+
+
+
 app.set('port', process.env.PORT || 3000);
 server.listen(app.get('port'), function () {
     var serverName = process.env.VCAP_APP_HOST ? process.env.VCAP_APP_HOST + ":" + process.env.VCAP_APP_PORT : 'localhost:3000';

@@ -15,19 +15,15 @@
     <input type="text" id="userNameInput"/><button id="userNameButton">Login</button>
 </div>
 <br/><br/>
-<hr/><br/><br/>
+<br/><br/>
+<div id="chat">
+    <input type="text" id="chatInput"/><button id="chatButton">Post</button>
+</div>
+
 <ul id="messages"></ul>
 
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/client.js"></script>
-<script>
-//    var socket = io();
-//    socket.on('newJoinerConfirmation', function(msg){
-//        $('#messages').append($('<li>').text(msg));
-//    });
-</script>
 </body>
 </html>

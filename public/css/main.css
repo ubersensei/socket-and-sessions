@@ -9,13 +9,23 @@ h1 {
     margin-bottom: 1em;
 }
 
-input#userNameInput {
+input#userNameInput, input#chatInput {
     width : 25em;
 }
 
+#chat {
+    margin: 3em 0;
+}
+
+button {
+    width: 70px;
+    margin-left: 5px;
+}
 
 #messages {
-    border: 1px solid #999;
+    border: 1px solid #0670B8;
+    background: #E5F2FA;
     padding: 1em;
     width: 30em;
+    min-height: 15em;
 }
