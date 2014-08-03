@@ -20,15 +20,8 @@ var redisDB = 2;
 /*
  Also use Redis for Session Store. Redis will keep all Express sessions in it.
  */
-//var RedisStore = require('connect-redis')(express),
-var rClient = redis.createClient();
+var rClient = redis.createClient(redisPort, redisHost);
 var sessionStore = new RedisStore({client:rClient});
-
-//var sessionStore = new RedisStore({
-//    host: redisHost,
-//    port: redisPort,
-//    db: redisDB
-//});
 
 var app = express();
 var server = require('http').Server(app);
@@ -57,18 +50,16 @@ app.post('/user', function (req, res) {
     res.json({"error":""});
 });
 
-
-var sub = redis.createClient();
-var pub = redis.createClient();
+var sub = redis.createClient(redisPort, redisHost);
+var pub = redis.createClient(redisPort, redisHost);
 sub.subscribe('chat-redis');
 
 io.use(socketHandshake({store: sessionStore, key:'jsessionid', secret:'secret', parser:cookieParser()}));
 io.on('connection', function (socket) {
-    console.log('connected');
+    console.log('a new socket got connected');
     socket.on('join', function () {
         console.log(socket.handshake.session.user + ' joined');
         var reply = JSON.stringify({category:'join', user:socket.handshake.session.user, msg:' joined the channel' });
-//        io.emit('chat', reply);
         pub.publish('chat-redis', reply);
     });
     socket.on('chat', function (message) {
@@ -76,18 +67,13 @@ io.on('connection', function (socket) {
         var content = chatMessage.msg;
         console.log(socket.handshake.session.user + ' pubished a chat message');
         var reply = JSON.stringify({category:'chat', user:socket.handshake.session.user, msg: content });
-//        io.emit('chat', reply);
         pub.publish('chat-redis', reply);
     });
-
 });
 
 sub.on('message', function (channel, message) {
-    console.log('got subbed');
-//        io.emit(channel, message);
     io.emit('chat', message);
 });
-
 
 app.set('port', process.env.PORT || 3000);
 server.listen(app.get('port'), function () {
