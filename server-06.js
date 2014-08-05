@@ -1,6 +1,7 @@
 /*
 
  Using redis for pub-sub
+ Note that this way of starting the node/socket.js works only locally.
 
  */
 

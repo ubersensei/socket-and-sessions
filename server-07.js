@@ -1,7 +1,7 @@
 /*
 
-This works on both aws and locally.
-Just be sure to update the redis server address
+ This works on both aws and locally.
+ Just be sure to update the redis server address
 
 
  */
