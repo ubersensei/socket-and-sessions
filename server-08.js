@@ -1,3 +1,10 @@
+/*
+
+ This works on both aws and locally.
+ Just be sure to update the redis server address
+
+ */
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -11,7 +18,8 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
-var redisHost = '10.142.157.26';
+var redisHost = '127.0.0.1';
+//var redisHost = '10.142.157.26';
 var redisPort = 6379;
 var redisDB = 2;
 
@@ -34,7 +42,7 @@ app.use(session({
 
 
 app.get('/', function(req, res) {
-    res.sendfile('public/index.html');
+    res.sendfile('public/index-08.html');
 });
 
 app.post('/user', function (req, res) {
