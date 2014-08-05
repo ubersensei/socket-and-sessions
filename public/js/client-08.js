@@ -3,7 +3,7 @@ $(document).ready(function () {
 //    var socket; // a global variable.
 
 
-    var userName = ($('#login input').val();
+    var userName = ($('#login input').val());
     if (userName !== "") {
         join(userName); //rejoin using old session
     }
