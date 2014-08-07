@@ -1,10 +1,3 @@
-/*
-
- This works on both aws and locally.
- Just be sure to update the redis server address
-
- */
-
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -18,8 +11,8 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
-var redisHost = '127.0.0.1';
 //var redisHost = '10.142.157.26';
+var redisHost = '127.0.0.1';
 var redisPort = 6379;
 var redisDB = 2;
 
@@ -48,7 +41,7 @@ app.get('/', function(req, res) {
 app.post('/user', function (req, res) {
     req.session.user = req.body.user;
     console.log("userName: " + req.session.user + " sessionid: " + req.sessionID + " and jsessionid: " + req.cookies['jsessionid']);
-    res.json({"error":""});
+    res.json({"error":"", "userFromSession":req.session.user});
 });
 
 var sub = redis.createClient(redisPort, redisHost);
@@ -78,5 +71,5 @@ sub.on('message', function (channel, message) {
 
 
 server.listen(8081, function(){
-    console.log('listening on *:3000');
+    console.log('started listening');
 });

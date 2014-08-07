@@ -17,15 +17,30 @@ input#userNameInput, input#chatInput {
     margin: 3em 0;
 }
 
+#chat ul {
+    margin-top: 2em;
+}
+
 button {
     width: 70px;
     margin-left: 5px;
 }
 
 #messages {
-    border: 1px solid #0670B8;
-    background: #E5F2FA;
+    border: 1px solid #E5F2FA;
+    /*border: 1px solid #0670B8;*/
+    /*background: #E5F2FA;*/
     padding: 1em;
     width: 30em;
     min-height: 15em;
+}
+
+
+#userName {
+    margin-bottom: 2em;
+}
+
+#userName span {
+    font-weight: bold;
+    color: #167754;
 }
