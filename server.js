@@ -11,8 +11,8 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
-//var redisHost = '10.142.157.26';
-var redisHost = '127.0.0.1';
+var redisHost = '10.142.157.26';
+//var redisHost = '127.0.0.1';
 var redisPort = 6379;
 var redisDB = 2;
 
