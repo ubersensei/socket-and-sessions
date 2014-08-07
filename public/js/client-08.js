@@ -26,8 +26,11 @@ $(document).ready(function () {
 
                 $('#userName span').text(data.userFromSession);
 
-                var serverIP = "127.0.0.1";
-                socket = io(serverIP, {reconnect: false});
+//                var serverIP = "http://127.0.0.1";
+//                socket = io(serverIP, {reconnect: false});
+
+                socket = io('http://localhost');
+
                 socket.emit('join', JSON.stringify({}));
 
                 socket.on('connect', function () {

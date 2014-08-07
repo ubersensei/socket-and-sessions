@@ -11,16 +11,15 @@
 
 <h1>Sockets and Sessions</h1>
 <br/>
+<div id="userName"><span>noOne</span>&nbsp is logged in</div>
 <div id="login">
     <input type="text" id="userNameInput" tabindex = "86"/><button id="userNameButton" tabindex = "89">Login</button>
 </div>
-<br/><br/>
-<br/><br/>
+
 <div id="chat">
     <input type="text" id="chatInput" tabindex = "96"/><button id="chatButton" tabindex = "99">Post</button>
+    <ul id="messages"></ul>
 </div>
-
-<ul id="messages"></ul>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>

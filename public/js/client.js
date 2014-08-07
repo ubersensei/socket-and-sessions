@@ -1,15 +1,20 @@
 $(document).ready(function () {
 
-   var socket; // a global variable.
+    var socket; // a global variable.
 
     $('#chatButton').click(function () {
         if ($('#chat input').val() != "") {
             socket.emit('chat', JSON.stringify({msg: $('#chat input').val()}));
+            $('#chat input').val('');
         }
     });
 
     $('#userNameButton').click(function () {
-        var userName = $('#login input').val() == "" ? "Johny" : $('#login input').val();
+        if ($('#login input').val() != "") {
+            var userName = $('#login input').val();
+            $('#login input').val('');
+        }
+
         $.ajax({
             type: "POST",
             url: "/user",
@@ -17,15 +22,44 @@ $(document).ready(function () {
             contentType : 'application/json',
             dataType: "json"
         })
-            .done(function() {
-                // send join message
+            .done(function(data) {
 
-//                alert('login success');
+                $('#userName span').text(data.userFromSession);
 
-//                socket = io();
-                var serverIP = "127.0.0.1";
-                socket = io(serverIP, {reconnect: false});
+//                var serverIP = "http://127.0.0.1";
+//                socket = io(serverIP, {reconnect: false});
+
+                socket = io('http://localhost');
+
                 socket.emit('join', JSON.stringify({}));
+
+                socket.on('connect', function () {
+                    console.log('connected');
+                });
+                socket.on('connecting', function () {
+                    console.log('connecting');
+                });
+                socket.on('disconnect', function () {
+                    console.log('disconnect');
+//                    intervalID = setInterval(tryReconnect, 4000);
+                });
+                socket.on('connect_failed', function () {
+                    console.log('connect_failed');
+                });
+                socket.on('error', function (err) {
+                    console.log('error: ' + err);
+                });
+                socket.on('reconnect_failed', function () {
+                    console.log('reconnect_failed');
+                });
+                socket.on('reconnect', function () {
+                    console.log('reconnected ');
+                });
+                socket.on('reconnecting', function () {
+                    console.log('reconnecting');
+                });
+
+
                 socket.on('chat', function(message){
                     var content;
                     var chatMessage = JSON.parse(message);
