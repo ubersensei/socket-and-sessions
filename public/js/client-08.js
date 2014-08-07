@@ -26,8 +26,37 @@ $(document).ready(function () {
 
                 $('#userName span').text(data.userFromSession);
 
-                socket = io();
+                var serverIP = "localhost";
+                socket = io(serverIP, {reconnect: false});
                 socket.emit('join', JSON.stringify({}));
+
+                socket.on('connect', function () {
+                    console.log('connected');
+                });
+                socket.on('connecting', function () {
+                    console.log('connecting');
+                });
+                socket.on('disconnect', function () {
+                    console.log('disconnect');
+//                    intervalID = setInterval(tryReconnect, 4000);
+                });
+                socket.on('connect_failed', function () {
+                    console.log('connect_failed');
+                });
+                socket.on('error', function (err) {
+                    console.log('error: ' + err);
+                });
+                socket.on('reconnect_failed', function () {
+                    console.log('reconnect_failed');
+                });
+                socket.on('reconnect', function () {
+                    console.log('reconnected ');
+                });
+                socket.on('reconnecting', function () {
+                    console.log('reconnecting');
+                });
+
+
                 socket.on('chat', function(message){
                     var content;
                     var chatMessage = JSON.parse(message);
