@@ -22,9 +22,9 @@ $(document).ready(function () {
 
 //                alert('login success');
 
-                socket = io();
-//                var serverIP = "127.0.0.1";
-//                socket = io(serverIP, {reconnect: false});
+//                socket = io();
+                var serverIP = "127.0.0.1";
+                socket = io(serverIP, {reconnect: false});
                 socket.emit('join', JSON.stringify({}));
                 socket.on('chat', function(message){
                     var content;

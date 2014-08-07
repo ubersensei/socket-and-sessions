@@ -22,7 +22,7 @@ var redisDB = 2;
 var rClient = redis.createClient(redisPort, redisHost);
 var sessionStore = new RedisStore({client:rClient});
 
-app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
@@ -37,6 +37,8 @@ app.use(session({
 app.get('/', function(req, res) {
     res.sendfile('public/index-08.html');
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/user', function (req, res) {
     req.session.user = req.body.user;
