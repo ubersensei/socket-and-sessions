@@ -35,7 +35,17 @@ app.use(session({
 
 
 app.get('/', function(req, res) {
-    res.sendfile('public/index-08.html');
+
+    var user = req.session.user;
+
+    //Regenerate new session & store user from previous session (if it exists)
+    req.session.regenerate(function (err) {
+        req.session.user = user;
+        console.log("Generated new session with userName: " + req.session.user + " sessionid: " + req.sessionID + " and jsessionid: " + req.cookies['jsessionid']);
+        res.sendfile('public/index-08.html');
+    });
+
+//    res.sendfile('public/index-08.html');
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
