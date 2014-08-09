@@ -22,7 +22,6 @@ var redisDB = 2;
 var rClient = redis.createClient(redisPort, redisHost);
 var sessionStore = new RedisStore({client:rClient});
 
-
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
