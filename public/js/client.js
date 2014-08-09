@@ -28,7 +28,8 @@ $(document).ready(function () {
 
 
 //                socket = io('http://localhost', {reconnection: false});
-                socket = io({reconnection: false});
+                  socket = io('http://127.0.0.1:8081', {reconnection: false});
+//                socket = io({reconnection: false});
                 var intervalID;
                 var reconnectCount = 0;
 
