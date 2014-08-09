@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
     req.session.regenerate(function (err) {
         req.session.user = user;
         console.log("Generated new session with userName: " + req.session.user + " sessionid: " + req.sessionID + " and jsessionid: " + req.cookies['jsessionid']);
-        res.sendfile('public/index-08.html');
+        res.sendfile('public/index.html');
     });
 
 //    res.sendfile('public/index-08.html');
