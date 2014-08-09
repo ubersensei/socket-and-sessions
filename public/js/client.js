@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 
 //                socket = io('http://localhost', {reconnection: false});
-                socket = io('http://localhost');
+                socket = io();
                 var intervalID;
                 var reconnectCount = 0;
 
