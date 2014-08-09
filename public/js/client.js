@@ -27,7 +27,8 @@ $(document).ready(function () {
                 $('#userName span').text(data.userFromSession);
 
 
-                socket = io('http://localhost', {reconnection: false});
+//                socket = io('http://localhost', {reconnection: false});
+                socket = io('http://localhost');
                 var intervalID;
                 var reconnectCount = 0;
 
