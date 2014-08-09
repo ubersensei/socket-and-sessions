@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 //                socket = io('http://localhost', {reconnection: false});
 //                  socket = io('http://127.0.0.1', {reconnection: false});
-                socket = io('http://ec2-54-179-34-28.ap-southeast-1.compute.amazonaws.com', {reconnection: false});
+//                socket = io('http://ec2-54-179-34-28.ap-southeast-1.compute.amazonaws.com', {reconnection: false});
 
                 socket = io({reconnection: false});
                 var intervalID;
